@@ -22,4 +22,16 @@ public class SuggestionForm extends AbstractView {
 	protected void initComponents() {
 	}
 
+	@Override
+	protected void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void save() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

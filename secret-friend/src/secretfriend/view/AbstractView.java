@@ -1,5 +1,8 @@
 package secretfriend.view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -31,10 +34,23 @@ public abstract class AbstractView extends JPanel {
 	/**
 	 * 
 	 */
-	protected void configure() {
+	private void configure() {
 		setLayout(new MigLayout("debug", "[30px, right]4px[grow]", ""));
 		btCancel = new JButton("Cancelar");
+		btCancel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				reset();
+			}
+		});
+		
 		btSave = new JButton("Salvar");
+		btSave.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				save();
+			}
+		});
 	}
 
 	/**
@@ -42,6 +58,15 @@ public abstract class AbstractView extends JPanel {
 	 */
 	protected abstract void initComponents();
 	
+	/**
+	 * 
+	 */
+	protected abstract void reset();
+	
+	/**
+	 * 
+	 */
+	protected abstract void save();
 	/**
 	 * @return
 	 */

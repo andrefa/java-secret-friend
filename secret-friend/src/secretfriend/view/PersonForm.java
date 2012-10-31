@@ -39,20 +39,34 @@ public class PersonForm extends AbstractView {
 	@Override
 	protected void initComponents() {
 		spPeople = new JScrollPane();
-		tbPeople = new JTable();
+		tbPeople = new JTable(new PersonTableModel(dao().list()));
+		
+		spPeople.setViewportView(tbPeople);
+		add(spPeople, "span 2, wrap");
 		
 		lbName = new JLabel("Nome:");
+		add(lbName);
 		tfName = new JTextField();
+		add(tfName, "wrap");
 		
 		lbEmail = new JLabel("Email:");
+		add(lbEmail);
 		tfEmail = new JTextField();
+		add(tfEmail, "wrap");
+		
+		add(btCancel);
+		add(btSave);
 	}
-	
-	
-	/**
-	 * 
-	 */
-	private void reset() {
+
+	@Override
+	protected void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void save() {
+		// TODO Auto-generated method stub
 		
 	}
 
