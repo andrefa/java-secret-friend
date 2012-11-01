@@ -19,8 +19,10 @@ public abstract class AbstractView extends JPanel {
 
 	private final PersonDao dao;
 	
-	private JButton btCancel;
-	private JButton btSave;
+	protected JButton btAddLine;
+	protected JButton btRemoveLine;
+	protected JButton btCancel;
+	protected JButton btSave;
 
 	/**
 	 * 
@@ -35,7 +37,24 @@ public abstract class AbstractView extends JPanel {
 	 * 
 	 */
 	private void configure() {
-		setLayout(new MigLayout("debug", "[30px, right]4px[grow]", ""));
+		setLayout(new MigLayout("debug","grow"));
+		
+		btAddLine = new JButton("Adicionar");
+		btAddLine.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				addLine();
+			}
+		});
+		
+		btRemoveLine = new JButton("Remover");
+		btRemoveLine.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				removeLine();
+			}
+		});
+		
 		btCancel = new JButton("Cancelar");
 		btCancel.addActionListener(new ActionListener() {
 			@Override
@@ -61,6 +80,16 @@ public abstract class AbstractView extends JPanel {
 	/**
 	 * 
 	 */
+	protected abstract void addLine();
+	
+	/**
+	 * 
+	 */
+	protected abstract void removeLine();
+	
+	/**
+	 * 
+	 */
 	protected abstract void reset();
 	
 	/**
@@ -73,7 +102,5 @@ public abstract class AbstractView extends JPanel {
 	public PersonDao dao() {
 		return dao;
 	}
-	
-	
 	
 }

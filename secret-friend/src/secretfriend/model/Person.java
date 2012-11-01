@@ -1,5 +1,6 @@
 package secretfriend.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public class Person {
 	 * 
 	 */
 	public Person() {
-		this(null, null, null);
+		this(null, null, new ArrayList<Suggestion>());
 	}
 	
 	/**
@@ -27,7 +28,7 @@ public class Person {
 	public Person (String name, String email, List<Suggestion> suggestions) {
 		this.name = name;
 		this.email = email;
-		this.suggestions = suggestions;
+		this.suggestions = suggestions == null ? new ArrayList<Suggestion>() : suggestions;
 	}
 
 	/**
@@ -62,14 +63,14 @@ public class Person {
 	 * @return the suggestions
 	 */
 	public List<Suggestion> getSuggestions() {
-		return suggestions;
+		return suggestions == null ? new ArrayList<Suggestion>() : suggestions;
 	}
 
 	/**
 	 * @param suggestions the suggestions to set
 	 */
 	public void setSuggestions(List<Suggestion> suggestions) {
-		this.suggestions = suggestions;
+		this.suggestions = suggestions == null ? new ArrayList<Suggestion>() : suggestions;
 	}
 	
 	@Override

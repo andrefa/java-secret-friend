@@ -21,7 +21,7 @@ import net.miginfocom.swing.MigLayout;
  */
 public class MainWindow extends JFrame {
 
-	private static final int WIDTH = 640;
+	private static final int WIDTH = 540;
 	private static final int HEIGHT = 480;
 	
 	private static final String TITLE = "Organizador de Amigos secretos!";
@@ -88,9 +88,9 @@ public class MainWindow extends JFrame {
 	 * @param view
 	 */
 	public void setNewView(AbstractView view){
-		contentPane.setLayout(new MigLayout("debug"));
+		contentPane.setLayout(new MigLayout("debug","[grow]","[grow]"));
         contentPane.removeAll();
-        contentPane.add(view);
+        contentPane.add(view,"growx");
         contentPane.revalidate();
         contentPane.repaint();
     }

@@ -23,6 +23,18 @@ public class SuggestionForm extends AbstractView {
 	}
 
 	@Override
+	protected void addLine() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	protected void removeLine() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
 	protected void reset() {
 		// TODO Auto-generated method stub
 		

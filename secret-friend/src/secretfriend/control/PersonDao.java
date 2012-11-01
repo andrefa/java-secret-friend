@@ -80,7 +80,9 @@ public class PersonDao {
 				suggs.add(new Suggestion(split[0], split[1].equals(EMPTY) ? "" : split[1]));
 			}
 		}
-		return new Person(values[0], values[1], suggs);
+		String name = values[0].equals(EMPTY) ? "" : values[0];
+		String email = values[1].equals(EMPTY) ? "" : values[1];
+		return new Person(name, email, suggs);
 	}
 
 	/**
@@ -95,8 +97,11 @@ public class PersonDao {
 			suggestionsString.append(s.getSuggestion()).append(SUGGESTIONS_ATTR_SEPARATOR).append(reference).append(SUGGESTIONS_SEPARATOR);
 		}
 
+		String name = entity.getName().equals("") ? EMPTY : entity.getName();
+		String email = entity.getEmail().equals("") ? EMPTY : entity.getEmail();
+		
 		StringBuilder entityString = new StringBuilder();
-		entityString.append(entity.getName()).append(ATTR_SEPARATOR).append(entity.getEmail()).append(ATTR_SEPARATOR).append(suggestionsString);
+		entityString.append(name).append(ATTR_SEPARATOR).append(email).append(ATTR_SEPARATOR).append(suggestionsString);
 
 		return entityString.toString();
 	}
