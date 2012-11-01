@@ -2,11 +2,9 @@ package secretfriend.view;
 
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
-
 import secretfriend.model.Person;
 
-public class PersonTableModel extends AbstractTableModel {
+public class PersonTableModel extends TableModelAdapter<Person> {
 
 	private List<Person> people;
 
@@ -14,17 +12,7 @@ public class PersonTableModel extends AbstractTableModel {
 	 * @param people
 	 */
 	public PersonTableModel(List<Person> people) {
-		this.people = people;
-	}
-
-	@Override
-	public int getRowCount() {
-		return people.size();
-	}
-
-	@Override
-	public int getColumnCount() {
-		return 3;
+		super(people);
 	}
 
 	@Override
@@ -46,47 +34,18 @@ public class PersonTableModel extends AbstractTableModel {
 	}
 	
 	@Override
-	public String getColumnName(int column) {
-		switch (column) {
-			case 0: return "Nome";
-			case 1:return "Email";
-			case 2:return "Sugestões";
-			default: return null;
-		}
+	protected String[] getColumnNames() {
+		return new String[] {"Nome", "Email", "Sugestões"};
 	}
-
+	
 	@Override
-	public Class<?> getColumnClass(int columnIndex) {
-		switch (columnIndex) {
-			case 0: return String.class;
-			case 1:return String.class;
-			case 2:return Integer.class;
-			default: return null;
-		}
+	protected Class<?>[] getColumnClasses() {
+		return new Class[] {String.class, String.class, Integer.class};
 	}
 	
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		return columnIndex == 0 || columnIndex == 1;
-	}
-	
-	public void addLine() {
-		people.add(new Person());
-		fireTableDataChanged();
-	}
-
-	public void removeLine(int selectedRow) {
-		people.remove(selectedRow);
-		fireTableDataChanged();
-	}
-	
-	public void reset(List<Person> people) {
-		this.people = people;
-		fireTableDataChanged();
-	}
-	
-	public List<Person> getPeople() {
-		return people;
 	}
 	
 }
