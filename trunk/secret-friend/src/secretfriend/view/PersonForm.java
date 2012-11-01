@@ -5,6 +5,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 import secretfriend.control.PersonDao;
+import secretfriend.model.Person;
 
 /**
  * 
@@ -44,7 +45,7 @@ public class PersonForm extends AbstractView {
 
 	@Override
 	protected void addLine() {
-		personTableModel.addLine();
+		personTableModel.addLine(new Person());
 	}
 
 	@Override
@@ -59,7 +60,7 @@ public class PersonForm extends AbstractView {
 
 	@Override
 	protected void save() {
-		dao().save(personTableModel.getPeople());
+		dao().save(personTableModel.getValues());
 	}
 
 }
