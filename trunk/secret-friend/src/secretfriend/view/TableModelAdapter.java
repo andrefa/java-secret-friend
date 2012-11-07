@@ -6,7 +6,7 @@ import javax.swing.table.AbstractTableModel;
 
 public abstract class TableModelAdapter<T> extends AbstractTableModel {
 
-	private List<T> values;
+	protected List<T> values;
 
 	/**
 	 * @param people

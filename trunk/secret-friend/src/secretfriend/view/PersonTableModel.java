@@ -6,8 +6,6 @@ import secretfriend.model.Person;
 
 public class PersonTableModel extends TableModelAdapter<Person> {
 
-	private List<Person> people;
-
 	/**
 	 * @param people
 	 */
@@ -18,9 +16,9 @@ public class PersonTableModel extends TableModelAdapter<Person> {
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		switch (columnIndex) {
-			case 0: return people.get(rowIndex).getName();
-			case 1:return people.get(rowIndex).getEmail();
-			case 2:return people.get(rowIndex).getSuggestions().size();
+			case 0: return values.get(rowIndex).getName();
+			case 1:return values.get(rowIndex).getEmail();
+			case 2:return values.get(rowIndex).getSuggestions().size();
 			default: return null;
 		}
 	}
@@ -28,8 +26,8 @@ public class PersonTableModel extends TableModelAdapter<Person> {
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		switch (columnIndex) {
-			case 0: people.get(rowIndex).setName(String.valueOf(aValue)); break;
-			case 1: people.get(rowIndex).setEmail(String.valueOf(aValue)); break;
+			case 0: values.get(rowIndex).setName(String.valueOf(aValue)); break;
+			case 1: values.get(rowIndex).setEmail(String.valueOf(aValue)); break;
 		}
 	}
 	
