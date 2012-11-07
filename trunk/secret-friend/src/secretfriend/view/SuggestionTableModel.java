@@ -28,8 +28,8 @@ public class SuggestionTableModel extends TableModelAdapter<Suggestion> {
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		switch (columnIndex) {
-			case 0: return values.get(rowIndex).getReference();
-			case 1:return values.get(rowIndex).getSuggestion();
+			case 0: return values.get(rowIndex).getSuggestion();
+			case 1:return values.get(rowIndex).getReference();
 			default: return null;
 		}
 	}
