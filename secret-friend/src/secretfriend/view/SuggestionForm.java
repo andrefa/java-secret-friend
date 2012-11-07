@@ -95,7 +95,6 @@ public class SuggestionForm extends AbstractView {
 
 	@Override
 	protected void save() {
-		//dao().save(personTableModel.getValues());
 		if (selected != null) {
 			selected.setSuggestions(suggestionsTableModel.getValues());
 			dao().save(people);
