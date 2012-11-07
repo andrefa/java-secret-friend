@@ -96,6 +96,7 @@ public abstract class AbstractView extends JPanel {
 	 * 
 	 */
 	protected abstract void save();
+	
 	/**
 	 * @return
 	 */

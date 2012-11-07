@@ -75,11 +75,12 @@ public class Person {
 	
 	@Override
 	public String toString() {
-		StringBuilder suggs = new StringBuilder();
+		/*StringBuilder suggs = new StringBuilder();
 		for (Suggestion sugg : suggestions) {
 			suggs.append(sugg).append(",");
 		}
-		return name + " - " + email + " - " + suggs.toString();
+		return name + " - " + email + " - " + suggs.toString();*/
+		return name;
 	}
 	
 	@Override
