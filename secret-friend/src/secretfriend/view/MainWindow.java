@@ -1,6 +1,7 @@
 package secretfriend.view;
 
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,9 +9,12 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import secretfriend.control.EmailSender;
 import secretfriend.control.PersonDao;
+import secretfriend.control.Raffle;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -81,6 +85,29 @@ public class MainWindow extends JFrame {
 		});
 		menuOptions.add(itemSuggesForm);
 		
+		JMenuItem enviarForm = new JMenuItem("Enviar");
+		enviarForm.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (JOptionPane.showConfirmDialog(MainWindow.this, "Confirma o sorteio e envio dos emails?") == JOptionPane.OK_OPTION) {
+					
+					EventQueue.invokeLater(new Runnable() {
+						@Override
+						public void run() {
+							try {
+								EmailSender.instance().sendEmails(Raffle.instance().getFriendCycle(dao.list()));
+								JOptionPane.showMessageDialog(MainWindow.this, "Sorteio concluído! ", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);					
+							} catch (Exception e1) {
+								JOptionPane.showMessageDialog(MainWindow.this, "O seguinte erro ocorreu durante o envio: " + e1.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);					
+							}
+							
+						}
+					});
+				}
+			}
+		});
+		menuOptions.add(enviarForm);
+		
 		menuBar.add(menuOptions);
 	}
 	
@@ -88,7 +115,7 @@ public class MainWindow extends JFrame {
 	 * @param view
 	 */
 	public void setNewView(AbstractView view){
-		contentPane.setLayout(new MigLayout("debug","[grow]","[grow]"));
+		contentPane.setLayout(new MigLayout("","[grow]","[grow]"));
         contentPane.removeAll();
         contentPane.add(view,"growx");
         contentPane.revalidate();
