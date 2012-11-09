@@ -11,12 +11,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
-import secretfriend.control.EmailSender;
-import secretfriend.control.PersonDao;
-import secretfriend.control.Raffle;
+import javax.swing.SwingUtilities;
 
 import net.miginfocom.swing.MigLayout;
+import secretfriend.control.PersonDao;
 
 
 /**
@@ -91,18 +89,22 @@ public class MainWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (JOptionPane.showConfirmDialog(MainWindow.this, "Confirma o sorteio e envio dos emails?") == JOptionPane.OK_OPTION) {
 					
-					EventQueue.invokeLater(new Runnable() {
-						@Override
+					final WaitingDialog dialog = new WaitingDialog();
+					
+					new Thread() {
 						public void run() {
 							try {
-								EmailSender.instance().sendEmails(Raffle.instance().getFriendCycle(dao.list()));
+								//EmailSender.instance().sendEmails(Raffle.instance().getFriendCycle(dao.list()));
+								Thread.sleep(10000);
+								dialog.setVisible(false);
 								JOptionPane.showMessageDialog(MainWindow.this, "Sorteio concluído! ", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);					
 							} catch (Exception e1) {
 								JOptionPane.showMessageDialog(MainWindow.this, "O seguinte erro ocorreu durante o envio: " + e1.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);					
 							}
-							
-						}
-					});
+						};
+					}.start();
+
+					dialog.setVisible(true);
 				}
 			}
 		});
