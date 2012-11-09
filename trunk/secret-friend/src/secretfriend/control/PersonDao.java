@@ -34,7 +34,9 @@ public class PersonDao {
 			
 			Collections.sort(people);
 			
-			BufferedWriter writer = new BufferedWriter(new FileWriter(new File(FILE_NAME)));
+			File file = new File(FILE_NAME);
+			file.createNewFile();
+			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 			
 			for (Person person : people) {
 				writer.write(entityToLine(person));
@@ -53,7 +55,9 @@ public class PersonDao {
 	public List<Person> list() {
 		List<Person> people = new ArrayList<Person>();
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(new File(FILE_NAME)));
+			File file = new File(FILE_NAME);
+			file.createNewFile();
+			BufferedReader reader = new BufferedReader(new FileReader(file));
 			
 			String line;
 			while ((line = reader.readLine()) != null) {
@@ -62,6 +66,9 @@ public class PersonDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		Collections.sort(people);
+		
 		return people;
 	}
 
@@ -84,6 +91,9 @@ public class PersonDao {
 		}
 		String name = values[0].equals(EMPTY) ? "" : values[0];
 		String email = values[1].equals(EMPTY) ? "" : values[1];
+		
+		Collections.sort(suggs);
+		
 		return new Person(name, email, suggs);
 	}
 
@@ -94,6 +104,9 @@ public class PersonDao {
 	private String entityToLine(Person entity) {
 
 		StringBuilder suggestionsString = new StringBuilder();
+		
+		Collections.sort(entity.getSuggestions());
+		
 		for (Suggestion s : entity.getSuggestions()) {
 			String reference = s.getReference() == null || s.getReference().equals("")  ? EMPTY : s.getReference();
 			suggestionsString.append(s.getSuggestion()).append(SUGGESTIONS_ATTR_SEPARATOR).append(reference).append(SUGGESTIONS_SEPARATOR);

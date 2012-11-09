@@ -110,9 +110,7 @@ public class SuggestionForm extends AbstractView {
 			dao().save(people);
 			people = dao().list();
 			suggestionsTableModel.fireTableDataChanged();
-		} else {
-			JOptionPane.showMessageDialog(this, "Seleciona uma pessoa na lista.","Erro!",JOptionPane.ERROR_MESSAGE);
-		}
+		} 
 	}
 
 }
