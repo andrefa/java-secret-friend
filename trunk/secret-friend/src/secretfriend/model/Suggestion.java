@@ -4,7 +4,7 @@ package secretfriend.model;
  * @author andre.almeida
  *
  */
-public class Suggestion {
+public class Suggestion implements Comparable<Suggestion>{
 	
 	private String suggestion;
 	private String reference;
@@ -72,4 +72,9 @@ public class Suggestion {
 		return false;
 	}
 
+	@Override
+	public int compareTo(Suggestion other) {
+		return suggestion.compareTo(other.suggestion);
+	}
+	
 }

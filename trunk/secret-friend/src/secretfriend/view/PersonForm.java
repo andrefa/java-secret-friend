@@ -65,6 +65,7 @@ public class PersonForm extends AbstractView {
 	@Override
 	protected void save() {
 		dao().save(personTableModel.getValues());
+		personTableModel.fireTableDataChanged();
 	}
 
 }

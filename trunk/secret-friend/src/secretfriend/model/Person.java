@@ -7,7 +7,7 @@ import java.util.List;
  *
  * @author andre.almeida
  */
-public class Person {
+public class Person implements Comparable<Person>{
 	
 	private String name;
 	private String email;
@@ -95,6 +95,11 @@ public class Person {
 			return this.name.equals(other.name) && this.email.equals(other.email); 
 		}
 		return false;
+	}
+
+	@Override
+	public int compareTo(Person other) {
+		return name.compareTo(other.name);
 	}
 
 }

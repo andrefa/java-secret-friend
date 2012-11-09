@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -74,17 +75,24 @@ public class SuggestionForm extends AbstractView {
 		for (Person p : people) {
 			cbPeople.addItem(p);
 		}
+		cbPeople.setSelectedItem(selected);
 	}
 
 	@Override
 	protected void addLine() {
-		suggestionsTableModel.addLine(new Suggestion());
+		if (selected != null) {
+			suggestionsTableModel.addLine(new Suggestion());
+		} else {
+			JOptionPane.showMessageDialog(this, "Seleciona uma pessoa na lista.","Erro!",JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	@Override
 	protected void removeLine() {
-		if (tbSuggestions.getSelectedRow() < 0)
+		if (tbSuggestions.getSelectedRow() < 0) {
+			JOptionPane.showMessageDialog(this, "Seleciona uma linha.","Erro!",JOptionPane.ERROR_MESSAGE);
 			return;
+		}
 		suggestionsTableModel.removeLine(tbSuggestions.getSelectedRow());
 	}
 
@@ -101,6 +109,9 @@ public class SuggestionForm extends AbstractView {
 			selected.setSuggestions(suggestionsTableModel.getValues());
 			dao().save(people);
 			people = dao().list();
+			suggestionsTableModel.fireTableDataChanged();
+		} else {
+			JOptionPane.showMessageDialog(this, "Seleciona uma pessoa na lista.","Erro!",JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
