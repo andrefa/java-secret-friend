@@ -50,6 +50,10 @@ public class PersonForm extends AbstractView {
 
 	@Override
 	protected void removeLine() {
+		if (tbPeople.getSelectedRow() < 0) {
+			return;
+		}
+		
 		personTableModel.removeLine(tbPeople.getSelectedRow());
 	}
 

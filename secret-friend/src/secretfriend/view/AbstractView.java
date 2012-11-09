@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import secretfriend.control.PersonDao;
@@ -43,7 +44,11 @@ public abstract class AbstractView extends JPanel {
 		btAddLine.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				addLine();
+				try {
+					addLine();
+				} catch (Exception ex) {
+					handleException(ex);
+				}
 			}
 		});
 		
@@ -51,7 +56,11 @@ public abstract class AbstractView extends JPanel {
 		btRemoveLine.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				removeLine();
+				try {
+					removeLine();
+				} catch (Exception ex) {
+					handleException(ex);
+				}
 			}
 		});
 		
@@ -59,7 +68,11 @@ public abstract class AbstractView extends JPanel {
 		btCancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				reset();
+				try {
+					reset();
+				} catch (Exception ex) {
+					handleException(ex);
+				}
 			}
 		});
 		
@@ -67,11 +80,23 @@ public abstract class AbstractView extends JPanel {
 		btSave.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				save();
+				try {
+					save();
+					JOptionPane.showMessageDialog(AbstractView.this, "Alterações salvas com sucesso.","Salvo!", JOptionPane.INFORMATION_MESSAGE);
+				} catch (Exception ex) {
+					handleException(ex);
+				}
 			}
 		});
 	}
 
+	/**
+	 * @param ex
+	 */
+	private void handleException(Exception ex) {
+		JOptionPane.showMessageDialog(this, "O seguinte erro ocorreu durante a execução: " + ex.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+	}
+	
 	/**
 	 * 
 	 */

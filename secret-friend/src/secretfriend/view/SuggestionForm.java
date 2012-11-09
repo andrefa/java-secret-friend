@@ -83,6 +83,8 @@ public class SuggestionForm extends AbstractView {
 
 	@Override
 	protected void removeLine() {
+		if (tbSuggestions.getSelectedRow() < 0)
+			return;
 		suggestionsTableModel.removeLine(tbSuggestions.getSelectedRow());
 	}
 
@@ -98,6 +100,7 @@ public class SuggestionForm extends AbstractView {
 		if (selected != null) {
 			selected.setSuggestions(suggestionsTableModel.getValues());
 			dao().save(people);
+			people = dao().list();
 		}
 	}
 
