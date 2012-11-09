@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import secretfriend.model.Person;
@@ -69,11 +68,10 @@ public class PersonDao {
 	private Person lineToEntity(String line) {
 		String[] values = line.split(ATTR_SEPARATOR);
 		
-		List<Suggestion> suggs = Collections.emptyList();
+		List<Suggestion> suggs = new ArrayList<Suggestion>();
 		if (values.length > 2) {
 			String suggsStr = values[2];
 			
-			suggs = new ArrayList<Suggestion>();
 			for (String suggStr : suggsStr.split(SUGGESTIONS_SEPARATOR)) {
 				String[] split = suggStr.split(SUGGESTIONS_ATTR_SEPARATOR);
 				
