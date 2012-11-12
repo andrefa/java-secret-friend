@@ -62,7 +62,7 @@ public class SuggestionForm extends AbstractView {
 		tbSuggestions.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		spSuggestions.setViewportView(tbSuggestions);
-		add(spSuggestions, "span, wrap, align center");
+		add(spSuggestions, "span, wrap, align center, growx");
 
 		add(btAddLine, "align right");
 		add(btRemoveLine, "align center");
@@ -71,11 +71,12 @@ public class SuggestionForm extends AbstractView {
 	}
 
 	private void populateCombo() {
+		cbPeople.removeAllItems();
 		people = dao().list();
 		for (Person p : people) {
 			cbPeople.addItem(p);
 		}
-		cbPeople.setSelectedItem(selected);
+		cbPeople.setSelectedItem(null);
 	}
 
 	@Override

@@ -1,7 +1,6 @@
 package secretfriend.view;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,10 +10,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 import net.miginfocom.swing.MigLayout;
+import secretfriend.control.EmailSender;
 import secretfriend.control.PersonDao;
+import secretfriend.control.Raffle;
 
 
 /**
@@ -23,7 +23,7 @@ import secretfriend.control.PersonDao;
  */
 public class MainWindow extends JFrame {
 
-	private static final int WIDTH = 540;
+	private static final int WIDTH = 680;
 	private static final int HEIGHT = 480;
 	
 	private static final String TITLE = "Organizador de Amigos secretos!";
@@ -94,8 +94,7 @@ public class MainWindow extends JFrame {
 					new Thread() {
 						public void run() {
 							try {
-								//EmailSender.instance().sendEmails(Raffle.instance().getFriendCycle(dao.list()));
-								Thread.sleep(10000);
+								EmailSender.instance().sendEmails(Raffle.instance().getFriendCycle(dao.list()));
 								dialog.setVisible(false);
 								JOptionPane.showMessageDialog(MainWindow.this, "Sorteio concluído! ", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);					
 							} catch (Exception e1) {

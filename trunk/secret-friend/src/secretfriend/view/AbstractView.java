@@ -38,7 +38,7 @@ public abstract class AbstractView extends JPanel {
 	 * 
 	 */
 	private void configure() {
-		setLayout(new MigLayout("","grow"));
+		setLayout(new MigLayout("","grow", "grow"));
 		
 		btAddLine = new JButton("Adicionar");
 		btAddLine.addActionListener(new ActionListener() {
