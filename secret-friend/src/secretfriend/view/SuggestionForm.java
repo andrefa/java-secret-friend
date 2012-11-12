@@ -76,7 +76,7 @@ public class SuggestionForm extends AbstractView {
 		for (Person p : people) {
 			cbPeople.addItem(p);
 		}
-		cbPeople.setSelectedItem(null);
+		cbPeople.setSelectedItem(selected);
 	}
 
 	@Override
@@ -109,7 +109,8 @@ public class SuggestionForm extends AbstractView {
 		if (selected != null) {
 			selected.setSuggestions(suggestionsTableModel.getValues());
 			dao().save(people);
-			people = dao().list();
+			selected = null;
+			populateCombo();
 			suggestionsTableModel.fireTableDataChanged();
 		} 
 	}
