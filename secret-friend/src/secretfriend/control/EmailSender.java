@@ -85,6 +85,7 @@ public class EmailSender {
 			simpleEmail.setSubject(email.getSubject());
 			simpleEmail.setHtmlMsg(email.getFormattedEmail());
 
+			simpleEmail.setDebug(true);
 			simpleEmail.send();
 		} catch (Exception e) {
 			e.printStackTrace();

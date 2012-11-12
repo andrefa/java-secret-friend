@@ -35,7 +35,7 @@ public class PersonForm extends AbstractView {
 		tbPeople.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		spPeople.setViewportView(tbPeople);
-		add(spPeople, "span, wrap, align center");
+		add(spPeople, "span, wrap, align center, growx");
 
 		add(btAddLine, "align right");
 		add(btRemoveLine, "align center");
