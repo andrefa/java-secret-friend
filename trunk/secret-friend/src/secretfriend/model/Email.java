@@ -17,8 +17,8 @@ public class Email {
 	private static final String PROPERTY_TO_NAME = "<to-name>";
 	private static final String PROPERTY_TO_EMAIL = "<to-email>";
 
-	private static final String PROPERTY_FROM_NAME = "<from-name>";
-	private static final String PROPERTY_FROM_EMAIL = "<from-email>";
+	private static final String PROPERTY_FRIEND_NAME = "<from-name>";
+	private static final String PROPERTY_FRIEND_EMAIL = "<from-email>";
 
 	private static final String PROPERTY_SUGGESTIONS_TABLE = "<suggs-table-lines>";
 
@@ -33,15 +33,15 @@ public class Email {
 	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("d 'de' MMMM 'de' yyyy");
 	private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#,###.00");
 	
-	private final Person from;
+	private final Person friend;
 	private final Person to;
 
 	/**
-	 * @param from
+	 * @param friend
 	 * @param to
 	 */
-	public Email(Person from, Person to) {
-		this.from = from;
+	public Email(Person friend, Person to) {
+		this.friend = friend;
 		this.to = to;
 	}
 	
@@ -68,13 +68,13 @@ public class Email {
 	private String replaceAll(String text) {
 		String replaced = text;
 		
-		replaced = replaced.replaceAll(PROPERTY_FROM_NAME,  from.getName());
-		replaced = replaced.replaceAll(PROPERTY_FROM_EMAIL, from.getEmail());
+		replaced = replaced.replaceAll(PROPERTY_FRIEND_NAME,  friend.getName());
+		replaced = replaced.replaceAll(PROPERTY_FRIEND_EMAIL, friend.getEmail());
 		
 		replaced = replaced.replaceAll(PROPERTY_TO_NAME,  to.getName());
 		replaced = replaced.replaceAll(PROPERTY_TO_EMAIL, to.getEmail());
 
-		replaced = replaced.replaceAll(PROPERTY_SUGGESTIONS_TABLE, getSuggestionsTableLines(from.getSuggestions()));
+		replaced = replaced.replaceAll(PROPERTY_SUGGESTIONS_TABLE, getSuggestionsTableLines(friend.getSuggestions()));
 
 		replaced = replaced.replaceAll(PROPERTY_MIN_VALUE, DECIMAL_FORMAT.format(Property.getMinValue()));
 		replaced = replaced.replaceAll(PROPERTY_MAX_VALUE, DECIMAL_FORMAT.format(Property.getMaxValue()));
@@ -124,10 +124,10 @@ public class Email {
 	}
 
 	/**
-	 * @return the from
+	 * @return the friend
 	 */
-	public Person getFrom() {
-		return from;
+	public Person getFriend() {
+		return friend;
 	}
 
 	/**
