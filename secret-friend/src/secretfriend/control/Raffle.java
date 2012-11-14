@@ -6,6 +6,7 @@ import java.util.List;
 
 import secretfriend.model.Email;
 import secretfriend.model.Person;
+import secretfriend.model.Rule;
 
 /**
  * @author andre.almeida
@@ -39,11 +40,14 @@ public class Raffle {
 	public List<Email> getFriendCycle(List<Person> people) {
 		List<Email> emails = new ArrayList<Email>();
 		
-		shuffleList(people, 100 * 1000);
-
-		for (int i=0;i<people.size()-1;i++) {
-			emails.add(new Email(people.get(i), people.get(i+1)));
-		}
+		do {
+			emails.clear();
+			shuffleList(people, 10);
+	
+			for (int i=0;i<people.size()-1;i++) {
+				emails.add(new Email(people.get(i), people.get(i+1)));
+			}
+		} while (!isValid(emails));
 		
 		emails.add(new Email(people.get(people.size()-1), people.get(0)));
 		
@@ -60,4 +64,20 @@ public class Raffle {
 		}
 	}
 	
+	private boolean isValid(List<Email> emails) {
+		List<Rule> rules = RulesController.listRules();
+		
+		for (Email mail : emails) {
+			for (Rule rule : rules) {
+				if (mail.getTo().getName().contains(rule.getPerson())) {
+					if (!rule.getOperand().compare(mail.getFriend().getName(), rule.getFriend())) {
+						System.out.println(String.format("is not valid> to:%s -> friend:%s",mail.getTo().getName(),mail.getFriend().getName()));
+						return false;
+					}
+				}
+			}
+		}
+		
+		return true;
+	}
 }
