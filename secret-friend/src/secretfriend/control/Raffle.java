@@ -47,9 +47,10 @@ public class Raffle {
 			for (int i=0;i<people.size()-1;i++) {
 				emails.add(new Email(people.get(i), people.get(i+1)));
 			}
+			emails.add(new Email(people.get(people.size()-1), people.get(0)));
+			
 		} while (!isValid(emails));
 		
-		emails.add(new Email(people.get(people.size()-1), people.get(0)));
 		
 		return emails;
 	}
@@ -71,13 +72,11 @@ public class Raffle {
 			for (Rule rule : rules) {
 				if (mail.getTo().getName().contains(rule.getPerson())) {
 					if (!rule.getOperand().compare(mail.getFriend().getName(), rule.getFriend())) {
-						System.out.println(String.format("is not valid> to:%s -> friend:%s",mail.getTo().getName(),mail.getFriend().getName()));
 						return false;
 					}
 				}
 			}
 		}
-		
 		return true;
 	}
 }
