@@ -8,7 +8,6 @@ public enum Operand {
 	MATCH("=") {
 		@Override
 		public boolean compare(String value1, String value2) {
-			System.out.println(value1.contains(value2));
 			return value1.contains(value2);
 		}
 	},
