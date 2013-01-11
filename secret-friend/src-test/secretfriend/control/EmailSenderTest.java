@@ -11,11 +11,12 @@ import secretfriend.AbstractTest;
 import secretfriend.model.Email;
 
 /**
- * @author andre.almeida
- *
+ * 
+ * 
+ * @author André Felipe de Almeida {almeida.andref@gmail.com}
  */
 public class EmailSenderTest extends AbstractTest {
-	
+
 	/**
 	 * 
 	 */
@@ -28,7 +29,7 @@ public class EmailSenderTest extends AbstractTest {
 			fail();
 		}
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -38,7 +39,7 @@ public class EmailSenderTest extends AbstractTest {
 		try {
 			EmailSender.instance().sendEmails(Raffle.instance().getFriendCycle(PEOPLE));
 			List<Email> friendCycle = Raffle.instance().getFriendCycle(PEOPLE);
-			
+
 			for (Email email : friendCycle) {
 				System.out.println("=======================================================");
 				System.out.println(email.getSubject());
@@ -49,5 +50,5 @@ public class EmailSenderTest extends AbstractTest {
 			fail();
 		}
 	}
-	
+
 }

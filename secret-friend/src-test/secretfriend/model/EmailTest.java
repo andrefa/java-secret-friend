@@ -5,11 +5,12 @@ import org.junit.Test;
 import secretfriend.AbstractTest;
 
 /**
- *
- * @author andre.almeida
+ * 
+ * 
+ * @author André Felipe de Almeida {almeida.andref@gmail.com}
  */
 public class EmailTest extends AbstractTest {
-	
+
 	/**
 	 * 
 	 */

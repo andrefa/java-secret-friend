@@ -16,18 +16,18 @@ import secretfriend.control.EmailSender;
 import secretfriend.control.PersonDao;
 import secretfriend.control.Raffle;
 
-
 /**
- *
- * @author andre.almeida
+ * 
+ * 
+ * @author André Felipe de Almeida {almeida.andref@gmail.com}
  */
 public class MainWindow extends JFrame {
 
 	private static final int WIDTH = 680;
 	private static final int HEIGHT = 480;
-	
+
 	private static final String TITLE = "Organizador de Amigos secretos!";
-	
+
 	private JPanel contentPane;
 
 	private PersonDao dao;
@@ -59,12 +59,12 @@ public class MainWindow extends JFrame {
 	private void initComponents() {
 		contentPane = new JPanel();
 		setContentPane(contentPane);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
+
 		JMenu menuOptions = new JMenu("Opções");
-		
+
 		JMenuItem itemPersonForm = new JMenuItem("Pessoas");
 		itemPersonForm.addActionListener(new ActionListener() {
 			@Override
@@ -73,7 +73,7 @@ public class MainWindow extends JFrame {
 			}
 		});
 		menuOptions.add(itemPersonForm);
-		
+
 		JMenuItem itemSuggesForm = new JMenuItem("Sugestões");
 		itemSuggesForm.addActionListener(new ActionListener() {
 			@Override
@@ -82,25 +82,26 @@ public class MainWindow extends JFrame {
 			}
 		});
 		menuOptions.add(itemSuggesForm);
-		
+
 		JMenuItem enviarForm = new JMenuItem("Enviar");
 		enviarForm.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (JOptionPane.showConfirmDialog(MainWindow.this, "Confirma o sorteio e envio dos emails?") == JOptionPane.OK_OPTION) {
-					
+
 					final WaitingDialog dialog = new WaitingDialog();
-					
+
 					new Thread() {
+						@Override
 						public void run() {
 							try {
 								EmailSender.instance().sendEmails(Raffle.instance().getFriendCycle(dao.list()));
 								dialog.setVisible(false);
-								JOptionPane.showMessageDialog(MainWindow.this, "Sorteio concluído! ", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);					
+								JOptionPane.showMessageDialog(MainWindow.this, "Sorteio concluído! ", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
 							} catch (Exception e1) {
-								JOptionPane.showMessageDialog(MainWindow.this, "O seguinte erro ocorreu durante o envio: " + e1.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);					
+								JOptionPane.showMessageDialog(MainWindow.this, "O seguinte erro ocorreu durante o envio: " + e1.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
 							}
-						};
+						}
 					}.start();
 
 					dialog.setVisible(true);
@@ -108,19 +109,19 @@ public class MainWindow extends JFrame {
 			}
 		});
 		menuOptions.add(enviarForm);
-		
+
 		menuBar.add(menuOptions);
 	}
-	
+
 	/**
 	 * @param view
 	 */
-	public void setNewView(AbstractView view){
-		contentPane.setLayout(new MigLayout("","[grow]","[grow]"));
-        contentPane.removeAll();
-        contentPane.add(view,"growx");
-        contentPane.revalidate();
-        contentPane.repaint();
-    }
-	
+	public void setNewView(AbstractView view) {
+		contentPane.setLayout(new MigLayout("", "[grow]", "[grow]"));
+		contentPane.removeAll();
+		contentPane.add(view, "growx");
+		contentPane.revalidate();
+		contentPane.repaint();
+	}
+
 }

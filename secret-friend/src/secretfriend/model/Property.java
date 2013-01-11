@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Properties;
 
 /**
- *
+ * 
  * @author andre.almeida
  */
 public class Property {
@@ -28,10 +28,10 @@ public class Property {
 
 	/** Instância única */
 	private static Property instance;
-	
+
 	/**  */
 	private static final SimpleDateFormat FORMAT = new SimpleDateFormat("dd/MM/yyyy");
-	
+
 	/**
 	 * @return
 	 */
@@ -43,37 +43,37 @@ public class Property {
 	}
 
 	private Properties properties;
-	
+
 	/**
-	 * @return
+	 * @return boolean
 	 */
 	public static Boolean isDeveloperModeOn() {
 		return Boolean.valueOf(instance().getProperty(DEVELOPER_MODE_ON));
 	}
-	
+
 	/**
-	 * @return
+	 * @return str
 	 */
 	public static String getDeveloperEmail() {
 		return instance().getProperty(DEVELOPER_MAIL);
 	}
-	
+
 	/**
-	 * @return
+	 * @return double
 	 */
 	public static Double getMinValue() {
 		return Double.valueOf(instance().getProperty(MIN_VALUE));
 	}
-	
+
 	/**
-	 * @return
+	 * @return double
 	 */
 	public static Double getMaxValue() {
 		return Double.valueOf(instance().getProperty(MAX_VALUE));
 	}
-	
+
 	/**
-	 * @return
+	 * @return date
 	 */
 	public static Date getDate() {
 		try {
@@ -85,19 +85,19 @@ public class Property {
 	}
 
 	/**
-	 * @return
+	 * @return str
 	 */
 	public static String getSubject() {
 		return instance().getProperty(SUBJECT);
 	}
-	
+
 	/**
 	 * 
 	 */
 	private Property() {
 		loadProperties();
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -109,7 +109,7 @@ public class Property {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * @param key
 	 * @return
@@ -117,5 +117,5 @@ public class Property {
 	private String getProperty(String key) {
 		return properties.getProperty(key);
 	}
-	
+
 }
