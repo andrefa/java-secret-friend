@@ -7,25 +7,24 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import net.miginfocom.swing.MigLayout;
 import secretfriend.control.PersonDao;
 
-import net.miginfocom.swing.MigLayout;
-
-
 /**
- *
+ * 
  * @author andre.almeida
  */
 public abstract class AbstractView extends JPanel {
 
 	private final PersonDao dao;
-	
+
 	protected JButton btAddLine;
 	protected JButton btRemoveLine;
 	protected JButton btCancel;
 	protected JButton btSave;
 
 	/**
+	 * @param dao
 	 * 
 	 */
 	public AbstractView(PersonDao dao) {
@@ -38,8 +37,8 @@ public abstract class AbstractView extends JPanel {
 	 * 
 	 */
 	private void configure() {
-		setLayout(new MigLayout("","grow", "grow"));
-		
+		setLayout(new MigLayout("", "grow", "grow"));
+
 		btAddLine = new JButton("Adicionar");
 		btAddLine.addActionListener(new ActionListener() {
 			@Override
@@ -51,7 +50,7 @@ public abstract class AbstractView extends JPanel {
 				}
 			}
 		});
-		
+
 		btRemoveLine = new JButton("Remover");
 		btRemoveLine.addActionListener(new ActionListener() {
 			@Override
@@ -63,7 +62,7 @@ public abstract class AbstractView extends JPanel {
 				}
 			}
 		});
-		
+
 		btCancel = new JButton("Cancelar");
 		btCancel.addActionListener(new ActionListener() {
 			@Override
@@ -75,14 +74,14 @@ public abstract class AbstractView extends JPanel {
 				}
 			}
 		});
-		
+
 		btSave = new JButton("Salvar");
 		btSave.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
 					save();
-					JOptionPane.showMessageDialog(AbstractView.this, "Alterações salvas com sucesso.","Salvo!", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(AbstractView.this, "Alterações salvas com sucesso.", "Salvo!", JOptionPane.INFORMATION_MESSAGE);
 				} catch (Exception ex) {
 					handleException(ex);
 				}
@@ -96,37 +95,37 @@ public abstract class AbstractView extends JPanel {
 	private void handleException(Exception ex) {
 		JOptionPane.showMessageDialog(this, "O seguinte erro ocorreu durante a execução: " + ex.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
 	}
-	
+
 	/**
 	 * 
 	 */
 	protected abstract void initComponents();
-	
+
 	/**
 	 * 
 	 */
 	protected abstract void addLine();
-	
+
 	/**
 	 * 
 	 */
 	protected abstract void removeLine();
-	
+
 	/**
 	 * 
 	 */
 	protected abstract void reset();
-	
+
 	/**
 	 * 
 	 */
 	protected abstract void save();
-	
+
 	/**
-	 * @return
+	 * @return dao
 	 */
 	public PersonDao dao() {
 		return dao;
 	}
-	
+
 }

@@ -1,5 +1,10 @@
 package secretfriend.model;
 
+/**
+ * 
+ * 
+ * @author André Felipe de Almeida {almeida.andref@gmail.com}
+ */
 public enum Operand {
 
 	/**
@@ -11,7 +16,7 @@ public enum Operand {
 			return value1.contains(value2);
 		}
 	},
-	
+
 	/**
 	 * 
 	 */
@@ -21,13 +26,17 @@ public enum Operand {
 			return !value1.contains(value2);
 		}
 	};
-	
+
 	private String symbol;
-	
+
 	private Operand(String symbol) {
 		this.symbol = symbol;
 	}
-	
+
+	/**
+	 * @param symbol
+	 * @return operand
+	 */
 	public static Operand getOperandFromSymbol(String symbol) {
 		for (Operand op : values()) {
 			if (op.symbol.equals(symbol)) {
@@ -36,6 +45,11 @@ public enum Operand {
 		}
 		return null;
 	}
-	
+
+	/**
+	 * @param to
+	 * @param from
+	 * @return result
+	 */
 	public abstract boolean compare(String to, String from);
 }

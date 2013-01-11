@@ -9,17 +9,25 @@ import java.util.List;
 import secretfriend.model.Operand;
 import secretfriend.model.Rule;
 
+/**
+ * 
+ * 
+ * @author André Felipe de Almeida {almeida.andref@gmail.com}
+ */
 public class RulesController {
-	
+
 	private static final String FILE_NAME = "rules.dat";
 
+	/**
+	 * @return rules
+	 */
 	public static List<Rule> listRules() {
 		List<Rule> rules = new ArrayList<Rule>();
 		try {
 			File file = new File(FILE_NAME);
 			file.createNewFile();
 			BufferedReader reader = new BufferedReader(new FileReader(file));
-			
+
 			String line;
 			while ((line = reader.readLine()) != null) {
 				rules.add(lineToEntity(line));
@@ -27,7 +35,7 @@ public class RulesController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return rules;
 	}
 
