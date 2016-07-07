@@ -16,6 +16,8 @@ import secretfriend.control.PersonDao;
  */
 public abstract class AbstractView extends JPanel {
 
+	private static final long serialVersionUID = 3543909870653576998L;
+
 	private final PersonDao dao;
 
 	protected JButton btAddLine;
@@ -81,7 +83,7 @@ public abstract class AbstractView extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					save();
-					JOptionPane.showMessageDialog(AbstractView.this, "Alterações salvas com sucesso.", "Salvo!", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(AbstractView.this, "AlteraÃ§Ãµes salvas com sucesso.", "Salvo!", JOptionPane.INFORMATION_MESSAGE);
 				} catch (Exception ex) {
 					handleException(ex);
 				}
@@ -93,7 +95,7 @@ public abstract class AbstractView extends JPanel {
 	 * @param ex
 	 */
 	private void handleException(Exception ex) {
-		JOptionPane.showMessageDialog(this, "O seguinte erro ocorreu durante a execução: " + ex.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(this, "O seguinte erro ocorreu durante a execuÃ§Ã£o: " + ex.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
 	}
 
 	/**

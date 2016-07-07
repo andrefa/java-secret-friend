@@ -14,7 +14,7 @@ import secretfriend.model.Rule;
  */
 public class Raffle {
 
-	/** Instância única */
+	/** Instï¿½ncia ï¿½nica */
 	private static Raffle instance;
 
 	/**
@@ -78,4 +78,5 @@ public class Raffle {
 		}
 		return true;
 	}
+	
 }

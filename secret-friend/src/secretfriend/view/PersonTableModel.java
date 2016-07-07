@@ -7,7 +7,7 @@ import secretfriend.model.Person;
 /**
  * 
  * 
- * @author André Felipe de Almeida {almeida.andref@gmail.com}
+ * @author Andrï¿½ Felipe de Almeida {almeida.andref@gmail.com}
  */
 public class PersonTableModel extends TableModelAdapter<Person> {
 
@@ -46,7 +46,7 @@ public class PersonTableModel extends TableModelAdapter<Person> {
 
 	@Override
 	protected String[] getColumnNames() {
-		return new String[] { "Nome", "Email", "Sugestões" };
+		return new String[] { "Nome", "Email", "SugestÃµes" };
 	}
 
 	@Override

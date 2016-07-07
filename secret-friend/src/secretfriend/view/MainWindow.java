@@ -19,7 +19,7 @@ import secretfriend.control.Raffle;
 /**
  * 
  * 
- * @author André Felipe de Almeida {almeida.andref@gmail.com}
+ * @author Andrï¿½ Felipe de Almeida {almeida.andref@gmail.com}
  */
 public class MainWindow extends JFrame {
 
@@ -63,7 +63,7 @@ public class MainWindow extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
-		JMenu menuOptions = new JMenu("Opções");
+		JMenu menuOptions = new JMenu("OpÃ§Ãµes");
 
 		JMenuItem itemPersonForm = new JMenuItem("Pessoas");
 		itemPersonForm.addActionListener(new ActionListener() {
@@ -74,7 +74,7 @@ public class MainWindow extends JFrame {
 		});
 		menuOptions.add(itemPersonForm);
 
-		JMenuItem itemSuggesForm = new JMenuItem("Sugestões");
+		JMenuItem itemSuggesForm = new JMenuItem("SugestÃµes");
 		itemSuggesForm.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -97,7 +97,7 @@ public class MainWindow extends JFrame {
 							try {
 								EmailSender.instance().sendEmails(Raffle.instance().getFriendCycle(dao.list()));
 								dialog.setVisible(false);
-								JOptionPane.showMessageDialog(MainWindow.this, "Sorteio concluído! ", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+								JOptionPane.showMessageDialog(MainWindow.this, "Sorteio concluÃ­do! ", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
 							} catch (Exception e1) {
 								JOptionPane.showMessageDialog(MainWindow.this, "O seguinte erro ocorreu durante o envio: " + e1.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
 							}

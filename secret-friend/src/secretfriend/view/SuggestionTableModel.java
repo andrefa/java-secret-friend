@@ -7,7 +7,7 @@ import secretfriend.model.Suggestion;
 /**
  * 
  * 
- * @author André Felipe de Almeida {almeida.andref@gmail.com}
+ * @author Andrï¿½ Felipe de Almeida {almeida.andref@gmail.com}
  */
 public class SuggestionTableModel extends TableModelAdapter<Suggestion> {
 
@@ -20,7 +20,7 @@ public class SuggestionTableModel extends TableModelAdapter<Suggestion> {
 
 	@Override
 	protected String[] getColumnNames() {
-		return new String[] { "Sugestão", "Referência" };
+		return new String[] { "SugestÃ£o", "ReferÃªncia" };
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package secretfriend.common;
 
 /**
- * Utilitários para realizar verificações em tempo de execução.
+ * UtilitÃ¡rios para realizar verificaÃ§Ãµes em tempo de execuÃ§Ã£o.
  * 
  */
 public final class Validate {
@@ -10,27 +10,27 @@ public final class Validate {
      * 
      */
     private Validate() {
-        // Somente métodos utilitários.
+        // Somente mÃ©todos utilitÃ¡rios.
     }
 
     /**
-     * Verifica que uma referência não é <tt>null</tt>.
+     * Verifica que uma referÃªncia nÃ£o Ã© <tt>null</tt>.
      * 
-     * @param <T> tipo da referência.
-     * @param instance referência.
-     * @return a referência.
+     * @param <T> tipo da referÃªncia.
+     * @param instance referÃªncia.
+     * @return a referÃªncia.
      */
     public static final <T> T notNull(final T instance) {
         return notNull(instance, null);
     }
 
     /**
-     * Verifica que uma referência não é <tt>null</tt>.
+     * Verifica que uma referÃªncia nÃ£o Ã© <tt>null</tt>.
      * 
-     * @param <T> tipo da referência.
-     * @param instance referência.
-     * @param errorMessage mensagem de erro caso a referência seja <tt>null</tt>.
-     * @return a referência.
+     * @param <T> tipo da referÃªncia.
+     * @param instance referÃªncia.
+     * @param errorMessage mensagem de erro caso a referÃªncia seja <tt>null</tt>.
+     * @return a referÃªncia.
      */
     public static final <T> T notNull(final T instance, final String errorMessage) {
         if (instance == null) {
@@ -40,22 +40,22 @@ public final class Validate {
     }
 
     /**
-     * Verifica se uma referência é nula.
+     * Verifica se uma referÃªncia Ã© nula.
      * 
-     * @param <T> tipo da referência.
-     * @param instance referência.
-     * @return {@code true} se for nula, caso contrário {@code false}.
+     * @param <T> tipo da referÃªncia.
+     * @param instance referÃªncia.
+     * @return {@code true} se for nula, caso contrÃ¡rio {@code false}.
      */
     public static <T> boolean isNull(final T instance) {
         return instance == null;
     }
     
     /**
-     * Verifica se uma referência não é nula.
+     * Verifica se uma referÃªncia nÃ£o Ã© nula.
      * 
-     * @param <T> tipo da referência.
-     * @param instance referência.
-     * @return {@code true} se não for nula, caso contrário {@code false}.
+     * @param <T> tipo da referÃªncia.
+     * @param instance referÃªncia.
+     * @return {@code true} se nÃ£o for nula, caso contrÃ¡rio {@code false}.
      */
     public static <T> boolean isNotNull(final T instance) {
         return instance != null;

@@ -84,14 +84,14 @@ public class SuggestionForm extends AbstractView {
 		if (selected != null) {
 			suggestionsTableModel.addLine(new Suggestion());
 		} else {
-			JOptionPane.showMessageDialog(this, "Seleciona uma pessoa na lista.","Erro!",JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Selecione uma pessoa na lista.","Erro!",JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
 	@Override
 	protected void removeLine() {
 		if (tbSuggestions.getSelectedRow() < 0) {
-			JOptionPane.showMessageDialog(this, "Seleciona uma linha.","Erro!",JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Selecione uma linha.","Erro!",JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		suggestionsTableModel.removeLine(tbSuggestions.getSelectedRow());
